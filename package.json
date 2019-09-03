@@ -1,6 +1,6 @@
 {
   "name": "@supergeneric/express",
-  "version": "0.1.0",
+  "version": "0.2.0",
   "description": "Minimally configured Express.js server",
   "engines": {
     "node": ">=10.0.0"
@@ -16,7 +16,7 @@
     "prebuild": "rm -rf dist && yarn test",
     "build": "babel src --out-dir dist -d",
     "test:watch": "yarn test - --watch",
-    "release": "yarn build && release --src=dist --push --tag",
+    "release": "yarn build && release --src=dist --push --tag --public",
     "release:major": "yarn release - --major",
     "release:minor": "yarn release - --minor",
     "release:patch": "yarn release - --patch",

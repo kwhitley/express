@@ -33,9 +33,9 @@ const isProduction = process.env.NODE_ENV === 'production'
 
 // accept paths in the format of [undefined, /, /path, /path/, 'path/']
 
-export const serverPath = path.join(appRoot, `./${isProduction ? 'dist' : '.dist-dev'}`)
-export const clientPath = serverPath + '/client'
-export const imagePath = clientPath + '/i'
+export var serverPath
+export var clientPath
+export var imagePath
 
 // default export is a function to mirror the express() initilization while allowing future options
 export default (config = {}) => {
@@ -45,7 +45,12 @@ export default (config = {}) => {
     useAuth = true,
     useClient = true,
     port = process.env.PORT || 3000,
+    distPath = (isProduction ? 'dist' : '.dist-dev'),
   } = config
+
+  serverPath = path.join(appRoot, `./${distPath}`)
+  clientPath = path.join(serverPath + '/client')
+  imagePath = clientPath + '/i'
 
   // instantiate express
   const app = express()

@@ -73,6 +73,9 @@ export default (config = {}) => {
     })
   )
 
+  // register each middleware
+  initialMiddleware.forEach(mw => app.use(mw))
+
   // embed basePath in req to avoid express version of prop-drilling
   app.use(embedBasePath(basePath))
 

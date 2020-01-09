@@ -37,6 +37,8 @@ export var serverPath
 export var clientPath
 export var imagePath
 
+const distPath = 'dist'
+
 // default export is a function to mirror the express() initilization while allowing future options
 export default (config = {}) => {
   const {
@@ -45,7 +47,6 @@ export default (config = {}) => {
     useAuth = true,
     useClient = true,
     port = process.env.PORT || 3000,
-    distPath = (isProduction ? 'dist' : '.dist-dev'),
   } = config
 
   serverPath = path.join(appRoot, `./${distPath}`)
